@@ -1,7 +1,8 @@
-import entities.Livre;
+import entities.Customer;
 
 import javax.persistence.*;
-import java.util.List;
+
+import static utils.Utils.*;
 
 public class TestJpa {
     public static void main(String[] args) {
@@ -33,52 +34,97 @@ public class TestJpa {
 
 
         ///////// TP 02 /////////
+//        try {
+//            emf = Persistence.createEntityManagerFactory("pizza-pu");
+//            EntityManager em = emf.createEntityManager();
+//            EntityTransaction tx = em.getTransaction();
+//            tx.begin();
+//
+//            // récupération du livre avec id = 3
+//            Livre livre3 = em.find(Livre.class, 3);
+//            System.out.println("Livre id = 3: " + livre3.getTitre() + " -- " + livre3.getAuteur());
+//
+//            // insertion d'un nouveau livre
+//            Livre newLivre = new Livre();
+//            newLivre.setTitre("Tintin au Congo");
+//            newLivre.setAuteur("Hergé");
+//            em.persist(newLivre);
+//            System.out.println("insertion d'un nouveau livre avec l'id = " + newLivre.getId());
+//
+//            // Modifiez le titre du livre d’identifiant 5 qui possède une erreur : le nouveau titre doit être
+//            // « Du plaisir dans la cuisine » au lieu de « 1001 recettes de Cuisine ».
+//            Livre l5 = em.find(Livre.class, 5);
+//            l5.setTitre("Du plaisir dans la cuisine");
+//
+//
+////           Faites une requête JPQL pour extraire de la base un livre en fonction de son titre.
+//            Query query = em.createQuery("SELECT l FROM Livre l WHERE l.titre='Germinal'");
+//            List<Livre> result1 = query.getResultList();
+//            System.out.println("lQuery.get(0) Titre: " + result1.get(0).getTitre() + " -- " + result1.get(0).getAuteur());
+//
+////           Faites une requête JPQL pour extraire de la base un livre en fonction de son auteur.
+//            query = em.createQuery("SELECT l FROM Livre l WHERE l.auteur='Jules Verne'");
+//            List<Livre> result2 = query.getResultList();
+//            System.out.println("lQuery.get(0) Titre: " + result2.get(0).getTitre() + " -- " + result2.get(0).getAuteur());
+//
+////           Supprimez un livre de votre choix en base de données.
+//            Livre lDead = em.find(Livre.class, 4);
+//            em.remove(lDead);
+//
+////           Affichez la liste de tous les livres présents en base de données (titre et auteur).
+//            System.out.println("///////// liste des livres ///////////");
+//            TypedQuery<Livre> queryAll = em.createQuery("select l from Livre l", Livre.class);
+//            List<Livre> listeLivres = queryAll.getResultList();
+//            for (Livre l : listeLivres) {
+//                System.out.println(l.getTitre() + " -- " + l.getAuteur());
+//            }
+//
+//            tx.commit();
+//            em.close();
+//
+//        } catch (PersistenceException e) {
+//            System.err.println("Erreur de persistance : " + e.getMessage());
+//        } finally {
+//            if (emf != null) {
+//                emf.close();
+//            }
+//        }
+//    }
+
+    ////////// mini projet ///////////
+
         try {
             emf = Persistence.createEntityManagerFactory("pizza-pu");
             EntityManager em = emf.createEntityManager();
+
+            //lister les pizzas
+            listPizzas(em);
+
+            //lister les boissons
+            listDrinks(em);
+
+            //lister les commandes
+            listOrders(em);
+
+            //créer un nouveau client
             EntityTransaction tx = em.getTransaction();
             tx.begin();
-
-            // récupération du livre avec id = 3
-            Livre livre3 = em.find(Livre.class, 3);
-            System.out.println("Livre id = 3: " + livre3.getTitre() + " -- " + livre3.getAuteur());
-
-            // insertion d'un nouveau livre
-            Livre newLivre = new Livre();
-            newLivre.setTitre("Tintin au Congo");
-            newLivre.setAuteur("Hergé");
-            em.persist(newLivre);
-            System.out.println("insertion d'un nouveau livre avec l'id = " + newLivre.getId());
-
-            // Modifiez le titre du livre d’identifiant 5 qui possède une erreur : le nouveau titre doit être
-            // « Du plaisir dans la cuisine » au lieu de « 1001 recettes de Cuisine ».
-            Livre l5 = em.find(Livre.class, 5);
-            l5.setTitre("Du plaisir dans la cuisine");
-
-
-//           Faites une requête JPQL pour extraire de la base un livre en fonction de son titre.
-            Query query = em.createQuery("SELECT l FROM Livre l WHERE l.titre='Germinal'");
-            List<Livre> result1 = query.getResultList();
-            System.out.println("lQuery.get(0) Titre: " + result1.get(0).getTitre() + " -- " + result1.get(0).getAuteur());
-
-//           Faites une requête JPQL pour extraire de la base un livre en fonction de son auteur.
-            query = em.createQuery("SELECT l FROM Livre l WHERE l.auteur='Jules Verne'");
-            List<Livre> result2 = query.getResultList();
-            System.out.println("lQuery.get(0) Titre: " + result2.get(0).getTitre() + " -- " + result2.get(0).getAuteur());
-
-//           Supprimez un livre de votre choix en base de données.
-            Livre lDead = em.find(Livre.class, 4);
-            em.remove(lDead);
-
-//           Affichez la liste de tous les livres présents en base de données (titre et auteur).
-            System.out.println("///////// liste des livres ///////////");
-            TypedQuery<Livre> queryAll = em.createQuery("select l from Livre l", Livre.class);
-            List<Livre> listeLivres = queryAll.getResultList();
-            for (Livre l : listeLivres) {
-                System.out.println(l.getTitre() + " -- " + l.getAuteur());
-            }
-
+            Customer client = new Customer();
+            client.setName("Mario");
+            client.setAddress("Nantes");
+            client.setPhone("06-11-22-33-44");
+            em.persist(client);
             tx.commit();
+
+            //mettre à jour les informations d'un client
+            tx.begin();
+            client.setName("Luigi");
+            tx.commit();
+
+            //créer une commande
+            tx.begin();
+            tx.commit();
+
             em.close();
 
         } catch (PersistenceException e) {

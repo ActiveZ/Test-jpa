@@ -5,18 +5,21 @@
     <!-- 1 unité de persistance => 1 base de données -->
     <persistence-unit name="pizza-pu" transaction-type="RESOURCE_LOCAL">
 
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- Choix de l'implementation JPA => Hibernate -->
         <class>entities.Pizza</class>
         <class>entities.Livre</class>
+        <class>entities.Drink</class>
+        <class>entities.CustomerOrder</class>
+        <class>entities.Customer</class>
 
         <properties>
 
             <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/pizza_db"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value=""/>
-<!--            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
+            <!--            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
 
         </properties>
 
