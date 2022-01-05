@@ -13,7 +13,6 @@ public class TestJpa {
 
             EntityManager em = emf.createEntityManager();
 
-
             Pizza pizzaId1 = em.find(Pizza.class, 1);
             System.out.println("Pizza id=1 name=" + pizzaId1.getName());
 
@@ -24,7 +23,6 @@ public class TestJpa {
             for (Pizza pizza : listePizzas) {
                 System.out.println(pizza.getName());
             }
-
 
             em.close();
 
