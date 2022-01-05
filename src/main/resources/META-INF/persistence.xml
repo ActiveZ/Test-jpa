@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+    <!-- 1 unité de persistance => 1 base de données -->
+    <persistence-unit name="pizza-pu" transaction-type="RESOURCE_LOCAL">
+
+        <!-- Choix de l'implementation JPA => Hibernate -->
+        <class>entities.Pizza</class>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <properties>
+
+            <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/pizza_db"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
+
+        </properties>
+
+    </persistence-unit>
+</persistence>
