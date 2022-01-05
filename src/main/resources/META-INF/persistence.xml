@@ -9,6 +9,7 @@
 
         <!-- Choix de l'implementation JPA => Hibernate -->
         <class>entities.Pizza</class>
+        <class>entities.Livre</class>
 
         <properties>
 
