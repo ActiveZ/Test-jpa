@@ -1,11 +1,12 @@
-package entities.tp;
+package entities.tp2;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "LIVRE")
-public class Livre {
+public class Livre_tp2 {
     @Id
+    @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

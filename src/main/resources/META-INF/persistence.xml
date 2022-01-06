@@ -11,7 +11,6 @@
 
         <!-- Choix de l'implementation JPA => Hibernate -->
         <class>entities.miniprojet.Pizza</class>
-        <class>entities.tp.Livre</class>
         <class>entities.miniprojet.Drink</class>
         <class>entities.miniprojet.CustomerOrder</class>
         <class>entities.miniprojet.Customer</class>
@@ -27,22 +26,24 @@
 
     <!--*************************************************************************************************************-->
 
-    <!--        BASE DE DONNEES: BIBLIO POUR TP2-->
+    <!--        BASE DE DONNEES: BIBLIO POUR TP2 TP3 -->
     <persistence-unit name="biblio-pu" transaction-type="RESOURCE_LOCAL">
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- Choix de l'implementation JPA => Hibernate -->
-        <class>entities.miniprojet.Pizza</class>
-        <class>entities.tp.Livre</class>
-        <class>entities.miniprojet.Drink</class>
-        <class>entities.miniprojet.CustomerOrder</class>
-        <class>entities.miniprojet.Customer</class>
+        <class>entities.tp2.Livre_tp2</class>
+
+        <class>entities.tp3.Livre</class>
+        <class>entities.tp3.Emprunt</class>
+        <class>entities.tp3.Client</class>
+        <class>entities.tp3.Compo</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/biblio"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.show_sql" value="false"/>
             <!--            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
         </properties>
 
