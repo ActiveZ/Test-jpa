@@ -1,8 +1,8 @@
 package utils;
 
-import entities.CustomerOrder;
-import entities.Drink;
-import entities.Pizza;
+import entities.miniprojet.CustomerOrder;
+import entities.miniprojet.Drink;
+import entities.miniprojet.Pizza;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

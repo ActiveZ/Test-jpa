@@ -1,4 +1,4 @@
-package entities;
+package entities.tp;
 
 import javax.persistence.*;
 
