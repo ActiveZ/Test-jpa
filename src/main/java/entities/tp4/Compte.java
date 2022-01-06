@@ -1,6 +1,7 @@
 package entities.tp4;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,7 +27,7 @@ public class Compte {
             joinColumns = @JoinColumn(name = "idCompte", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "idClient", referencedColumnName = "id")
     )
-    private List<Client> clients;
+    private List<Client> clients = new ArrayList<>();
 
 
     public Integer getId() {
@@ -65,7 +66,7 @@ public class Compte {
         return clients;
     }
 
-    public void setClients(List<Client> clients) {
-        this.clients = clients;
+    public void addClient(Client client) {
+        this.clients.add(client);
     }
 }

@@ -12,20 +12,20 @@ public class Banque {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "nom",nullable = false)
+    @Column(name = "nom", nullable = false)
     private String nom;
 
     @OneToMany(mappedBy = "banque")
     private List<Client> clients = new ArrayList<>();
 
-    public List<Client> getClients() {
-        return clients;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void seClients(List<Client> clients) {
-        this.clients = clients;
+    public void setId(Integer id) {
+        this.id = id;
     }
-
 
     public String getNom() {
         return nom;
@@ -35,11 +35,12 @@ public class Banque {
         this.nom = nom;
     }
 
-    public Integer getId() {
-        return id;
+    public List<Client> getClients() {
+        return clients;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
+
 }

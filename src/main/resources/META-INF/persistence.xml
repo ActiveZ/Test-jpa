@@ -19,6 +19,7 @@
         <class>entities.tp4.Operation</class>
         <class>entities.tp4.Compte</class>
         <class>entities.tp4.AAA</class>
+        <class>entities.tp4.LIVREsav</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/pizza_db"/>
