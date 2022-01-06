@@ -14,12 +14,19 @@
         <class>entities.miniprojet.Drink</class>
         <class>entities.miniprojet.CustomerOrder</class>
         <class>entities.miniprojet.Customer</class>
+        <class>entities.tp4.Banque</class>
+        <class>entities.tp4.Client</class>
+        <class>entities.tp4.Operation</class>
+        <class>entities.tp4.Compte</class>
+        <class>entities.tp4.AAA</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/pizza_db"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.show_sql" value="false"/>
             <!--            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
         </properties>
 
     </persistence-unit>
@@ -45,6 +52,43 @@
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="hibernate.show_sql" value="false"/>
             <!--            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
+        </properties>
+
+    </persistence-unit>
+
+    <!--*************************************************************************************************************-->
+
+    <!--        BASE DE DONNEES: BANQUE POUR TP4-->
+    <!-- 1 unité de persistance => 1 base de données -->
+    <persistence-unit name="banque" transaction-type="RESOURCE_LOCAL">
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Choix de l'implementation JPA => Hibernate -->
+        <class>entities.tp4.Banque</class>
+        <class>entities.tp4.Client</class>
+        <class>entities.tp4.Operation</class>
+        <class>entities.tp4.Compte</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/banque"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+<!--            affichage des requètes SQL-->
+            <property name="hibernate.show_sql" value="false"/>
+
+            <!--            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
+
+            <!-- desactiver l'autodetection des classes de type @Entity -->
+            <property name="hibernate.archive.autodetection" value="" />
+
+            <!-- Activation de la génération des tables manquantes uniquement -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <!-- Drop and create à chaque redémarrage -->
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+
         </properties>
 
     </persistence-unit>
