@@ -31,6 +31,17 @@ public class Client {
     )
     private List<Compte>comptes;
 
+    @Embedded
+    private Adresse adresse;
+
+    public Client() {
+    }
+
+    public Client(String nom, String prenom, LocalDate dateNaissance) {
+        this.nom = nom;
+        this.prenom = prenom;
+        DateNaissance = dateNaissance;
+    }
 
     public Integer getId() {
         return id;
@@ -78,5 +89,13 @@ public class Client {
 
     public void setComptes(List<Compte> comptes) {
         this.comptes = comptes;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
     }
 }

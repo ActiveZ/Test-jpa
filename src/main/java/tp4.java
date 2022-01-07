@@ -1,3 +1,4 @@
+import entities.tp4.Adresse;
 import entities.tp4.Banque;
 import entities.tp4.Client;
 import entities.tp4.Compte;
@@ -19,15 +20,13 @@ public class tp4 {
             tx.begin();
 
             // creation d'une banque
-            Banque banque = new Banque();
-            banque.setNom("Société Géniale");
+            Banque banque = new Banque("Société Géniale");
             em.persist(banque);
 
             // creation d'un client
-            Client client = new Client();
-            client.setNom("Dupontel");
-            client.setPrenom("Albert");
-            client.setDateNaissance(LocalDate.of(1789, 7, 14));
+            Client client = new Client("Dupontel","Albert", LocalDate.of(1789, 7, 14) );
+            Adresse adresse = new Adresse(1,"rue de la Bastille",75000,"Paris");
+            client.setAdresse(adresse);
             client.setBanque(banque);
             em.persist(client);
 
