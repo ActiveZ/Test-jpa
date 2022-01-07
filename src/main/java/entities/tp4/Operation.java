@@ -11,11 +11,11 @@ public class Operation {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "date", nullable = false)
-    private LocalDateTime date;
-
     @Column(name = "montant", nullable = false)
     private double montant;
+
+    @Column(name = "date", nullable = false)
+    private LocalDateTime date;
 
     @Column(name = "motif", nullable = false)
     private String motif;
@@ -24,6 +24,17 @@ public class Operation {
     @JoinColumn(name = "idOperation")
     private AbstractCompte compte;
 
+    public Operation() {
+    }
+
+    public Operation(double montant, LocalDateTime date, AbstractCompte compte, String motif) {
+        this.montant = montant;
+        this.date = date;
+        this.compte = compte;
+        this.motif = motif;
+        // update solde du compte
+        compte.setSolde(compte.getSolde() + montant);
+    }
 
     public AbstractCompte getCompte() {
         return compte;

@@ -23,6 +23,7 @@
         <class>entities.tp4.Adresse</class>
         <class>entities.tp4.LivretA</class>
         <class>entities.tp4.AssuranceVie</class>
+        <class>entities.tp4.Virement</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/pizza_db"/>
@@ -62,7 +63,7 @@
 
     <!--*************************************************************************************************************-->
 
-    <!--        BASE DE DONNEES: BANQUE POUR TP4-->
+    <!--        BASE DE DONNEES: BANQUE POUR TP4 et TP5-->
     <!-- 1 unité de persistance => 1 base de données -->
     <persistence-unit name="banque" transaction-type="RESOURCE_LOCAL">
 
@@ -76,6 +77,7 @@
         <class>entities.tp4.AbstractCompte</class>
         <class>entities.tp4.LivretA</class>
         <class>entities.tp4.AssuranceVie</class>
+        <class>entities.tp4.Virement</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/banque"/>

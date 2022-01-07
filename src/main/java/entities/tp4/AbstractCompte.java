@@ -31,6 +31,14 @@ public class AbstractCompte {
     )
     private List<Client> clients = new ArrayList<>();
 
+    public AbstractCompte() {
+    }
+
+    public AbstractCompte(String numero, Double solde) {
+        this.numero = numero;
+        this.solde = solde;
+    }
+
 
     public Integer getId() {
         return id;

@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class tp4 {
     public static void main(String[] args) {
@@ -27,15 +28,20 @@ public class tp4 {
             client.setBanque(banque);
             em.persist(client);
 
-            // ccréation d'un livret A
-            LivretA livretA = new LivretA(1.5);
+            // création d'un livret A
+            LivretA livretA = new LivretA("xxx-xxx", 0.0,1.5);
             em.persist(livretA);
             client.setComptes(livretA);
 
             // création d'une assurance vie
-            AssuranceVie assuranceVie = new AssuranceVie(3.0, LocalDate.of(2030, 12, 31));
+            AssuranceVie assuranceVie = new AssuranceVie("yyy-yyy",0.0, 3.0, LocalDate.of(2030, 12, 31));
             em.persist(assuranceVie);
             client.setComptes(assuranceVie);
+
+            // ajout d'une opération
+//            System.out.println("get1 = " + client.getComptes().get(0).getId());
+            Operation op = new Operation(1000, LocalDateTime.now(), client.getComptes().get(0), "parce que !");
+            em.persist(op);
 
             tx.commit();
             em.close();
