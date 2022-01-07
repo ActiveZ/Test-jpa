@@ -22,14 +22,14 @@ public class Operation {
 
     @ManyToOne
     @JoinColumn(name = "idOperation")
-    private Compte compte;
+    private AbstractCompte compte;
 
 
-    public Compte getCompte() {
+    public AbstractCompte getCompte() {
         return compte;
     }
 
-    public void setCompte(Compte compte) {
+    public void setCompte(AbstractCompte compte) {
         this.compte = compte;
     }
 

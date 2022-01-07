@@ -1,7 +1,4 @@
-import entities.tp4.Adresse;
-import entities.tp4.Banque;
-import entities.tp4.Client;
-import entities.tp4.Compte;
+import entities.tp4.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -24,16 +21,21 @@ public class tp4 {
             em.persist(banque);
 
             // creation d'un client
-            Client client = new Client("Dupontel","Albert", LocalDate.of(1789, 7, 14) );
-            Adresse adresse = new Adresse(1,"rue de la Bastille",75000,"Paris");
+            Client client = new Client("Dupontel", "Albert", LocalDate.of(1789, 7, 14));
+            Adresse adresse = new Adresse(1, "rue de la Bastille", 75000, "Paris");
             client.setAdresse(adresse);
             client.setBanque(banque);
             em.persist(client);
 
-            // creation d'un compte
-            Compte compte = new Compte();
-            compte.addClient(client);
-            em.persist(compte);
+            // ccréation d'un livret A
+            LivretA livretA = new LivretA(1.5);
+            em.persist(livretA);
+            client.setComptes(livretA);
+
+            // création d'une assurance vie
+            AssuranceVie assuranceVie = new AssuranceVie(3.0, LocalDate.of(2030, 12, 31));
+            em.persist(assuranceVie);
+            client.setComptes(assuranceVie);
 
             tx.commit();
             em.close();

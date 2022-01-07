@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type")
 @Table(name = "compte")
-public class Compte {
+public class AbstractCompte {
     public static final String COLUMN_ID_NAME = "id";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +19,7 @@ public class Compte {
     private String numero;
 
     @Column(name = "solde")
-    private double solde;
+    private Double solde = 0.0;
 
     @OneToMany(mappedBy = "compte")
     private List<Operation> operations;
@@ -46,7 +48,7 @@ public class Compte {
         this.numero = numero;
     }
 
-    public double getSolde() {
+    public Double getSolde() {
         return solde;
     }
 

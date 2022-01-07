@@ -2,6 +2,7 @@ package entities.tp4;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,7 +30,7 @@ public class Client {
             joinColumns = @JoinColumn(name = "idClient", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "idCompte", referencedColumnName = "id")
     )
-    private List<Compte>comptes;
+    private List<AbstractCompte>comptes = new ArrayList<>();
 
     @Embedded
     private Adresse adresse;
@@ -83,12 +84,12 @@ public class Client {
         this.banque = banque;
     }
 
-    public List<Compte> getComptes() {
+    public List<AbstractCompte> getComptes() {
         return comptes;
     }
 
-    public void setComptes(List<Compte> comptes) {
-        this.comptes = comptes;
+    public void setComptes(AbstractCompte comptes) {
+        this.comptes.add(comptes);
     }
 
     public Adresse getAdresse() {
