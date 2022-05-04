@@ -14,8 +14,8 @@ public class tp2 {
             tx.begin();
 
             // récupération du livre avec id = 3
-            Livre_tp2 livre3 = em.find(Livre_tp2.class, 3);
-            System.out.println("Livre id = 3: " + livre3.getTitre() + " -- " + livre3.getAuteur());
+            Livre_tp2 livre = em.find(Livre_tp2.class, 3);
+            System.out.println("Livre id = 3: " + livre.getTitre() + " -- " + livre.getAuteur());
 
             // insertion d'un nouveau livre
             Livre_tp2 newLivre = new Livre_tp2();
@@ -31,37 +31,36 @@ public class tp2 {
 
 
 //           Faites une requête JPQL pour extraire de la base un livre en fonction de son titre.
-            Query query = em.createQuery("SELECT l FROM Livre l WHERE l.titre='Germinal'");
+            Query query = em.createQuery("SELECT l FROM Livre_tp2 l WHERE l.titre='Germinal'");
             List<Livre_tp2> result1 = query.getResultList(); // si on est sur d'avoir un et un seul résultat, sinon erreur noReultException
-            //System.out.println(query.getSingleResult().getAuteur()); // a revoir
             System.out.println("lQuery.get(0) Titre: " + result1.get(0).getTitre() + " -- " + result1.get(0).getAuteur());
 
 //           Faites une requête JPQL pour extraire de la base un livre en fonction de son auteur.
-            query = em.createQuery("SELECT l FROM Livre l WHERE l.auteur=:auteurLivre");
-            // query.setParameter("auteurLivre", "Jules Verne");
+            query = em.createQuery("SELECT l FROM Livre_tp2 l WHERE l.auteur=:auteurLivre");
+             query.setParameter("auteurLivre", "Jules Verne");
             List<Livre_tp2> result2 = query.getResultList();
             System.out.println("lQuery.get(0) Titre: " + result2.get(0).getTitre() + " -- " + result2.get(0).getAuteur());
 
 //           Supprimez un livre de votre choix en base de données.
+            System.out.println("Suppression du livre avec l'id 4 (s'il existe)");
             Livre_tp2 lDead = em.find(Livre_tp2.class, 4);
-            em.remove(lDead);
+            if(lDead != null) {
+                System.out.println("Livre trouvé -> suppression");
+                em.remove(lDead);
+            }
 
-//           Affichez la liste de tous les livres présents en base de données (titre et auteur).
+//          Affichez la liste de tous les livres présents en base de données (titre et auteur).
             System.out.println("///////// liste des livres ///////////");
-            TypedQuery<Livre_tp2> queryAll = em.createQuery("select l from Livre l", Livre_tp2.class);
+            TypedQuery<Livre_tp2> queryAll = em.createQuery("select l from Livre_tp2 l", Livre_tp2.class);
             List<Livre_tp2> listeLivres = queryAll.getResultList();
             for (Livre_tp2 l : listeLivres) {
                 System.out.println(l.getTitre() + " -- " + l.getAuteur());
             }
-
             tx.commit();
             em.close();
-
-        }
-//        catch (PersistenceException e) {
-//            System.err.println("Erreur de persistance : " + e.getMessage());
-//        }
-        finally {
+        } catch (PersistenceException e) {
+            System.err.println("Erreur de persistance : " + e.getMessage());
+        } finally {
             if (emf != null) {
                 emf.close();
             }

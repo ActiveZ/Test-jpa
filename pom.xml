@@ -37,7 +37,7 @@
             <scope>runtime</scope>
         </dependency>
 
-<!--        pour supprinmer lignes rouges de Hibernates-->
+<!--        pour supprimer lignes rouges de Hibernates-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>

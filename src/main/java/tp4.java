@@ -1,9 +1,6 @@
 import entities.tp4.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -29,12 +26,12 @@ public class tp4 {
             em.persist(client);
 
             // création d'un livret A
-            LivretA livretA = new LivretA("xxx-xxx", 0.0,1.5);
+            LivretA livretA = new LivretA("xxx-xxx", 0.0, 1.5);
             em.persist(livretA);
             client.setComptes(livretA);
 
             // création d'une assurance vie
-            AssuranceVie assuranceVie = new AssuranceVie("yyy-yyy",0.0, 3.0, LocalDate.of(2030, 12, 31));
+            AssuranceVie assuranceVie = new AssuranceVie("yyy-yyy", 0.0, 3.0, LocalDate.of(2030, 12, 31));
             em.persist(assuranceVie);
             client.setComptes(assuranceVie);
 
@@ -45,10 +42,9 @@ public class tp4 {
 
             tx.commit();
             em.close();
-        }
-//        catch (PersistenceException e) {
-//            System.err.println("Erreur de persistance : " + e.getMessage());
-        finally {
+        } catch (PersistenceException e) {
+            System.err.println("Erreur de persistance : " + e.getMessage());
+        } finally {
             if (emf != null) {
                 emf.close();
             }

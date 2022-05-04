@@ -3,8 +3,35 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 
-    <!--        BASE DE DONNEES: PIZZA_DB POUR MINI-PROJET-->
+    <!-- BASE DE DONNEES: PIZZA_DB POUR MINI-PROJET-->
     <!-- 1 unité de persistance => 1 base de données -->
+    <persistence-unit name="biblio-pu" transaction-type="RESOURCE_LOCAL">
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Choix de l'implementation JPA => Hibernate -->
+        <class>entities.tp2.Livre_tp2</class>
+        <class>entities.tp3.Livre</class>
+        <class>entities.tp3.Emprunt</class>
+        <class>entities.tp3.Client_tp3</class>
+        <class>entities.tp3.Compo</class>
+
+        <!-- pour exclure les entités non utilisées -->
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/biblio"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <!-- <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
+        </properties>
+
+    </persistence-unit>
+
+    <!--*************************************************************************************************************-->
+
+    <!-- BASE DE DONNEES: BIBLIO POUR TP2 TP3 -->
     <persistence-unit name="pizza-pu" transaction-type="RESOURCE_LOCAL">
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -28,9 +55,9 @@
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/pizza_db"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
             <property name="hibernate.show_sql" value="false"/>
-            <!--            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
+            <!-- <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
         </properties>
 
@@ -38,32 +65,7 @@
 
     <!--*************************************************************************************************************-->
 
-    <!--        BASE DE DONNEES: BIBLIO POUR TP2 TP3 -->
-    <persistence-unit name="biblio-pu" transaction-type="RESOURCE_LOCAL">
-
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-        <!-- Choix de l'implementation JPA => Hibernate -->
-        <class>entities.tp2.Livre_tp2</class>
-
-        <class>entities.tp3.Livre</class>
-        <class>entities.tp3.Emprunt</class>
-        <class>entities.tp3.Client</class>
-        <class>entities.tp3.Compo</class>
-
-        <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/biblio"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
-            <property name="hibernate.show_sql" value="false"/>
-            <!--            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
-        </properties>
-
-    </persistence-unit>
-
-    <!--*************************************************************************************************************-->
-
-    <!--        BASE DE DONNEES: BANQUE POUR TP4 et TP5-->
+    <!-- BASE DE DONNEES: BANQUE POUR TP4 et TP5-->
     <!-- 1 unité de persistance => 1 base de données -->
     <persistence-unit name="banque" transaction-type="RESOURCE_LOCAL">
 
@@ -82,15 +84,15 @@
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/banque"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
 
-<!--            affichage des requètes SQL-->
+            <!-- affichage ou non des requètes SQL-->
             <property name="hibernate.show_sql" value="false"/>
 
-            <!--            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
+            <!-- <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>-->
 
-            <!-- desactiver l'autodetection des classes de type @Entity -->
-            <property name="hibernate.archive.autodetection" value="" />
+            <!-- désactiver l'autodétection des classes de type @Entity -->
+            <property name="hibernate.archive.autodetection" value=""/>
 
             <!-- Activation de la génération des tables manquantes uniquement -->
             <property name="hibernate.hbm2ddl.auto" value="update"/>

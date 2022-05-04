@@ -22,14 +22,14 @@ public class Emprunt {
 
     @ManyToOne
     @JoinColumn(name = "ID_CLIENT")
-    private Client client;
+    private Client_tp3 client;
 
     @Override
     public String toString() {
-        return  "dateDebut=" + dateDebut +
-                ", dateFin=" + dateFin +
-                ", delai=" + delai +
-                ", client=" + client.getNom() + " " + client.getPrenom();
+        return  "date début = " + dateDebut +
+                ", date Fin = " + dateFin +
+                ", délai = " + delai +
+                ", client = " + client.getNom() + " " + client.getPrenom() + "\n";
     }
 
     public Set<Livre> getLivres() {
