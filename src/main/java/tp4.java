@@ -89,11 +89,11 @@ public class tp4 {
                     montant,
                     LocalDateTime.now(),
                     client1.getComptes().get(0),
-                    "Virement urgent",
+                    "Virement vers client 2",
                     client2.getNom() + " " + client2.getPrenom());
             em.persist(vt);
             // crédit sur le compte destinataire
-            Operation op3 = new Operation(montant, LocalDateTime.now(), client2.getComptes().get(0), "vt vers client 2");
+            Operation op3 = new Operation(montant, LocalDateTime.now(), client2.getComptes().get(0), "vt de client 1");
             em.persist(op3);
 
             // affichage des soldes des comptes après opération virement 500 client 1 -> client 2
