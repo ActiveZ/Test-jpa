@@ -30,7 +30,7 @@ public class Client {
             joinColumns = @JoinColumn(name = "idClient", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "idCompte", referencedColumnName = "id")
     )
-    private List<AbstractCompte>comptes = new ArrayList<>();
+    private List<AbstractCompte> comptes = new ArrayList<>();
 
     @Embedded
     private Adresse adresse;

@@ -15,7 +15,7 @@ public class AssuranceVie extends AbstractCompte {
     }
 
     public AssuranceVie(String numero, Double solde, Double taux, LocalDate dateFin) {
-        super(numero,solde);
+        super(numero, solde);
         this.taux = taux;
         this.dateFin = dateFin;
     }
