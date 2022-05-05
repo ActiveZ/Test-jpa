@@ -24,4 +24,11 @@ public class LivretA extends AbstractCompte {
     public void setTaux(Double taux) {
         this.taux = taux;
     }
+
+    @Override
+    public String toString() {
+        return "LivretA{" +
+                "taux=" + taux +
+                '}';
+    }
 }

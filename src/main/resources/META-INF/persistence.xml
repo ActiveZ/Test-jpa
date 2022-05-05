@@ -15,6 +15,7 @@
         <class>entities.tp3.Emprunt</class>
         <class>entities.tp3.Client_tp3</class>
         <class>entities.tp3.Compo</class>
+        <class>entities.tp4.NewEntity</class>
 
         <!-- pour exclure les entités non utilisées -->
         <exclude-unlisted-classes>true</exclude-unlisted-classes>

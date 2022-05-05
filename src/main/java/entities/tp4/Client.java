@@ -99,4 +99,17 @@ public class Client {
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", DateNaissance=" + DateNaissance +
+                ", banque=" + banque +
+                ", comptes=" + comptes +
+                ", adresse=" + adresse +
+                '}';
+    }
 }

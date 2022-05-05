@@ -35,4 +35,12 @@ public class AssuranceVie extends AbstractCompte {
     public void setDateFin(LocalDate dateFin) {
         this.dateFin = dateFin;
     }
+
+    @Override
+    public String toString() {
+        return "AssuranceVie{" +
+                "taux=" + taux +
+                ", dateFin=" + dateFin +
+                '}';
+    }
 }

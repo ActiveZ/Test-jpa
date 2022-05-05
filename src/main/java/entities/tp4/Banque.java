@@ -49,4 +49,12 @@ public class Banque {
         this.clients = clients;
     }
 
+    @Override
+    public String toString() {
+        return "Banque{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", clients=" + clients +
+                '}';
+    }
 }

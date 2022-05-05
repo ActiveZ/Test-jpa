@@ -21,7 +21,7 @@ public class Operation {
     private String motif;
 
     @ManyToOne
-    @JoinColumn(name = "idOperation")
+    @JoinColumn(name = "idCompte")
     private AbstractCompte compte;
 
     public Operation() {
@@ -74,5 +74,16 @@ public class Operation {
 
     public void setMotif(String motif) {
         this.motif = motif;
+    }
+
+    @Override
+    public String toString() {
+        return "Operation{" +
+                "id=" + id +
+                ", montant=" + montant +
+                ", date=" + date +
+                ", motif='" + motif + '\'' +
+                ", compte=" + compte +
+                '}';
     }
 }
